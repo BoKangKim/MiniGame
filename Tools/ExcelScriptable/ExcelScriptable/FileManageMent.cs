@@ -25,7 +25,7 @@ namespace ExcelScriptable
             if(rf.Run() == true)
             {
                 Console.WriteLine("Excel File Read And Copy Complete...");
-                wf = new WriteFile(rf.OBJ,writePath,GUID);
+                wf = new WriteFile(rf.read,writePath,GUID);
                 if(wf.Run() == true)
                 {
                     Console.WriteLine("Complete...");
