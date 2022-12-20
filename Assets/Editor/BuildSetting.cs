@@ -19,16 +19,17 @@ public class BuildSetting
 
         if(buildInfo.Exists == false)
         {
-            Directory.CreateDirectory(buildPath);
+            Directory.CreateDirectory(buildInfo.FullName);
         }
 
-        folderName = buildPath + DateTime.Now.ToString("yyyy-MM-dd_hh:mm:ss") + "/";
+        folderName = buildPath + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss") + "/";
         FileInfo folder = new FileInfo(folderName);
 
         if (folder.Exists == false)
         {
-            Directory.CreateDirectory(folderName);
+            Directory.CreateDirectory(folder.FullName);
         }
+
 
         BuildPipeline.BuildPlayer(scene, folderName + "build.exe", BuildTarget.StandaloneWindows64, BuildOptions.None);
     }
