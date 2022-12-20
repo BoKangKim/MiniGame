@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using System;
 
 public class BuildSetting
 {
     [MenuItem("MyTools/Build")]
     public static void MyBuild()
     {
-        string desktop = "C:/Users/User/Desktop";
-        string buildPath = desktop + "/Build/";
+        string desktop = "C:/MetaTrend_1";
+        string buildPath = desktop + "/MiniGame_1/";
         string[] scene = { "Assets/Scenes/SampleScene.unity" };
+        string folderName = "";
 
         FileInfo buildInfo = new FileInfo(buildPath);
 
@@ -20,7 +22,14 @@ public class BuildSetting
             Directory.CreateDirectory(buildPath);
         }
 
+        folderName = buildPath + DateTime.Now.ToString("yyyy-MM-dd_hh:mm:ss") + "/";
+        FileInfo folder = new FileInfo(folderName);
 
-        BuildPipeline.BuildPlayer(scene, buildPath + "build.exe", BuildTarget.StandaloneWindows64, BuildOptions.None);
+        if (folder.Exists == false)
+        {
+            Directory.CreateDirectory(folderName);
+        }
+
+        BuildPipeline.BuildPlayer(scene, folderName + "build.exe", BuildTarget.StandaloneWindows64, BuildOptions.None);
     }
 }
