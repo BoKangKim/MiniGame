@@ -8,4 +8,8 @@ public class PickScriptable : ScriptableObject
     [SerializeField] private string objName;
     [SerializeField] private int touchDamage;
     [SerializeField] private int gold;
+
+    public int GettouchDamage() { return touchDamage; }
+
+    public int Getgold() { return gold; }
 }

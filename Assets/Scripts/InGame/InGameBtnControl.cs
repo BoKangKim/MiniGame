@@ -12,7 +12,7 @@ public class InGameBtnControl : MonoBehaviour
 
     public void OnClickUpgradeBtn()
     {
-
+        GameManager.Inst.UpgradePick();
     }
 
     public void OnClickRetryBtn()

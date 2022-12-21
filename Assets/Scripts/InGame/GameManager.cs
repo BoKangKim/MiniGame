@@ -35,14 +35,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Sprite[] Picks = null;
     [SerializeField] private Sprite InteractImg = null;
     [SerializeField] private Sprite NotInteractImg = null;
+    [SerializeField] private Image pickImg = null;
 
     [Header("Button")]
     [SerializeField] private Button[] levels = null;
     [SerializeField] private Button crystal = null;
+    [SerializeField] private Button upgradeBtn = null;
 
     [Header("Canvases")]
     [SerializeField] private Canvas PauseCanvas = null;
     [SerializeField] private Canvas SelectStageCanvas = null;
+    [SerializeField] private GameObject UpgradeCanvas = null;
 
     [Header("Scriptable")]
     [SerializeField] private CrystalScriptable[] CrystalDatas = null;
@@ -92,9 +95,7 @@ public class GameManager : MonoBehaviour
         save = new Save();
         load = new Load();
 
-        SaveData? temp = load.Start();
-
-        data = (SaveData)temp;
+        data = load.Start();
 
         MyLevel = data.level;
         MyPickLevel = data.pick;
@@ -128,6 +129,7 @@ public class GameManager : MonoBehaviour
 
         myPick = PickDatas[MyPickLevel - 1];
 
+        gold = 10000000;
         InitLevel(MyLevel);
     }
 
@@ -176,5 +178,36 @@ public class GameManager : MonoBehaviour
 
         timer.text = "TIMER \n" + myCrystal.GetTimer().ToString();
         time = myCrystal.GetTimer();
+
+        upgradeGold.text = myPick.Getgold().ToString();
+    }
+
+    public void UpgradePick()
+    {
+        if(gold < myPick.Getgold()
+            || MyPickLevel > 5)
+        {
+            return;
+        }
+
+        gold -= myPick.Getgold();
+
+        MyPickLevel++;
+
+        myPick = PickDatas[MyPickLevel];
+        upgradeGold.text = myPick.Getgold().ToString();
+
+        pickImg.sprite = Picks[MyPickLevel - 1];
+        Image img = null;
+        upgradeBtn.TryGetComponent<Image>(out img);
+
+        if(MyPickLevel < 4)
+        {
+            img.sprite = Picks[MyPickLevel];
+        }
+        else
+        {
+            UpgradeCanvas.SetActive(false);
+        }
     }
 }
