@@ -1700,7 +1700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &987733562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2255,6 +2255,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fa4a1476f5dbade459fb18f33a9a7e2b, type: 2}
   - {fileID: 11400000, guid: 1f36e37c73276e444832edc54f0b7c87, type: 2}
   - {fileID: 11400000, guid: a9ce6e8b4d85ac044a285c8c690bf48b, type: 2}
+  stageInfo: {fileID: 338030857}
+  goldInfo: {fileID: 1822603020}
+  upgradeGold: {fileID: 1149777148}
+  timer: {fileID: 381077562}
+  hpInfo: {fileID: 1788386265}
   myCrystal: {fileID: 0}
   myPick: {fileID: 0}
 --- !u!4 &1184134034
@@ -3387,7 +3392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RESUME
+  m_text: RETRY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4203,7 +4208,7 @@ GameObject:
   - component: {fileID: 1954970675}
   - component: {fileID: 1954970674}
   m_Layer: 5
-  m_Name: Resume
+  m_Name: Retry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

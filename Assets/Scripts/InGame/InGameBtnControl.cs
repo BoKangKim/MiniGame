@@ -15,10 +15,11 @@ public class InGameBtnControl : MonoBehaviour
 
     }
 
-    public void OnClickResumeBtn()
+    public void OnClickRetryBtn()
     {
-        
         GameManager.Inst.GetPauseCanvas.gameObject.SetActive(false);
+        GameManager.Inst.InitLevel(GameManager.Inst.MyLevel);
+        GameManager.Inst.TimePlay();
     }
 
     public void OnClickSelectStageBtn()

@@ -68,13 +68,14 @@ public class GameManager : MonoBehaviour
     };
     #endregion
 
-    public int MyLevel { get; private set; } = 5;
+    public int MyLevel { get; private set; } = 1;
     public int MyPickLevel { get; private set; } = 1;
     [HideInInspector] public CrystalScriptable myCrystal = null;
     [HideInInspector] public PickScriptable myPick = null;
     private Image crystalImg = null;
     private int maxHP = 0;
     private int curHP = 0;
+    private float time = 0;
 
     private void Awake()
     {
@@ -96,12 +97,26 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        myCrystal = CrystalDatas[MyLevel - 1];
         myPick = PickDatas[MyPickLevel - 1];
+
+        InitLevel(MyLevel);
     }
 
     private void Update()
     {
+        if (time <= 0f)
+        {
+            TimePause();
+            PauseCanvas.gameObject.SetActive(true);
+            return;
+        }
+
+        time -= Time.deltaTime;
+
+        timer.text = "TIMER \n" + ((int)time).ToString();
+
+        
+
         if(Input.GetKeyDown(KeyCode.Escape) == true)
         {
             if(PauseCanvas.gameObject.activeSelf == false 
@@ -121,10 +136,16 @@ public class GameManager : MonoBehaviour
 
     public void InitLevel(int level)
     {
+        MyLevel = level;
         myCrystal = CrystalDatas[level - 1];
         crystalImg.sprite = Crystals[level - 1];
 
         maxHP = curHP = myCrystal.GetHP();
         hpInfo.text = curHP.ToString() + " / " + maxHP.ToString();
+
+        stageInfo.text = "STAGE \n" +  myCrystal.GetStage().ToString();
+
+        timer.text = "TIMER \n" + myCrystal.GetTimer().ToString();
+        time = myCrystal.GetTimer();
     }
 }
