@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas PauseCanvas = null;
     [SerializeField] private Canvas SelectStageCanvas = null;
     [SerializeField] private GameObject UpgradeCanvas = null;
+    [SerializeField] private Canvas EndingCanvas = null;
 
     [Header("Scriptable")]
     [SerializeField] private CrystalScriptable[] CrystalDatas = null;
@@ -137,9 +138,8 @@ public class GameManager : MonoBehaviour
     {
         if (time <= 0f)
         {
-            TimePause();
             save.Start(MyLevel,gold,MyPickLevel);
-            PauseCanvas.gameObject.SetActive(true);
+            InitLevel(MyLevel);
             return;
         }
 
