@@ -2220,7 +2220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f94d99e074417f4186aac43c3f4f432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cystals:
+  Crystals:
   - {fileID: 21300000, guid: 509cb3b35f001bc4a968ce8d774ed1a0, type: 3}
   - {fileID: 21300000, guid: 9675d4635f0901647bf7230c63608399, type: 3}
   - {fileID: 21300000, guid: 348d274d4eb056c4fa6017e66567ae24, type: 3}
@@ -2234,13 +2234,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bd90c072d8f28f04392b743f92ce0457, type: 3}
   InteractImg: {fileID: 21300000, guid: e14856af1ef6fc9449b0c62fc9e5ed9b, type: 3}
   NotInteractImg: {fileID: 21300000, guid: a73ec2992ca135e48987416ecdcdc2c3, type: 3}
-  crystal: {fileID: 0}
   levels:
   - {fileID: 1247778544}
   - {fileID: 1237907604}
   - {fileID: 2083420032}
   - {fileID: 1217032897}
   - {fileID: 1363319293}
+  crystal: {fileID: 1910079980}
   PauseCanvas: {fileID: 987733564}
   SelectStageCanvas: {fileID: 1876380635}
   CrystalDatas:

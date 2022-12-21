@@ -37,6 +37,7 @@ public class InGameBtnControl : MonoBehaviour
 
     public void OnClickStageBtn(int level)
     {
-
+        GameManager.Inst.InitLevel(level);
+        GameManager.Inst.GetSelectStageCanvas.gameObject.SetActive(false);
     }
 }
