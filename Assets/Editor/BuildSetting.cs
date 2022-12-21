@@ -12,7 +12,8 @@ public class BuildSetting
     {
         string desktop = "C:/MetaTrend_1";
         string buildPath = desktop + "/MiniGame_1/";
-        string[] scene = { "Assets/Scenes/SampleScene.unity" };
+        string[] scene = { "Assets/Scenes/HomeScene.unity",
+        "Assets/Scenes/InGameScene.unity"};
         string folderName = "";
 
         FileInfo buildInfo = new FileInfo(buildPath);
