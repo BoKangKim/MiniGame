@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aea419f04dcb8c42808495108b85848, type: 3}
   m_Name: Crystal_3
   m_EditorClassIdentifier:
-  lv: 0
-  stage: 1
-  stoneHP: 250
+  lv: 3
+  stage: 4
+  stoneHP: 2550
   timer: 30
-  goldEarned: 5
+  goldEarned: 60

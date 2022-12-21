@@ -66,6 +66,7 @@ namespace ExcelScriptable
                         sw[i].WriteLine(splitDatas[count][j]);
                     }
 
+                    count++;
                     sw[i].Close();
                 }
                 Console.WriteLine("Complete Write...");

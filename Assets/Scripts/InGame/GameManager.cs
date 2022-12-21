@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas PauseCanvas = null;
     [SerializeField] private Canvas SelectStageCanvas = null;
 
+    [Header("Scriptable")]
+    [SerializeField] private CrystalScriptable[] CrystalDatas = null;
+
     public Canvas GetPauseCanvas { get { return PauseCanvas; } }
     public Canvas GetSelectStageCanvas { get { return SelectStageCanvas; } }
 

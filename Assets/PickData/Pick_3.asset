@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aea419f04dcb8c42808495108b85848, type: 3}
-  m_Name: Crystal_1
-  m_EditorClassIdentifier:
-  lv: 1
-  stage: 2
-  stoneHP: 900
-  timer: 30
-  goldEarned: 15
+  m_Script: {fileID: 11500000, guid: bff3bae44848213459a08a8d350bd75c, type: 3}
+  m_Name: Pick_3
+  m_EditorClassIdentifier: 
+  lv: 3
+  objName: 금 곡괭이
+  touchDamage: 7
+  gold: 300
