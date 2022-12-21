@@ -201,8 +201,12 @@ public class GameManager : MonoBehaviour
     public void UpgradePick()
     {
 
-        if (gold < myPick.Getgold()
-            || MyPickLevel > 5)
+        if (MyPickLevel < 5 && gold < PickDatas[MyPickLevel].Getgold())
+        {
+            return;
+        }
+
+        if(MyPickLevel > 5)
         {
             return;
         }
