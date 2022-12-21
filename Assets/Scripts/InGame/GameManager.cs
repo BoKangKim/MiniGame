@@ -138,6 +138,7 @@ public class GameManager : MonoBehaviour
         if (time <= 0f)
         {
             TimePause();
+            save.Start(MyLevel,gold,MyPickLevel);
             PauseCanvas.gameObject.SetActive(true);
             return;
         }
@@ -200,6 +201,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        save.Start(MyLevel, gold, MyPickLevel);
+
         MyPickLevel++;
         myPick = PickDatas[MyPickLevel - 1];
         pickImg.sprite = Picks[MyPickLevel - 1];
@@ -222,5 +225,16 @@ public class GameManager : MonoBehaviour
 
         gold -= myPick.Getgold();
         goldInfo.text = gold.ToString() + "G";
+    }
+
+    public void ClearStage()
+    {
+        // if Clear Stage
+        gold += myCrystal.GetGoldEarned();
+        MyLevel++;
+        InitLevel(MyLevel);
+
+        //Save
+        save.Start(MyLevel,gold,MyPickLevel);
     }
 }
