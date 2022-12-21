@@ -179,35 +179,48 @@ public class GameManager : MonoBehaviour
         timer.text = "TIMER \n" + myCrystal.GetTimer().ToString();
         time = myCrystal.GetTimer();
 
-        upgradeGold.text = myPick.Getgold().ToString();
+        goldInfo.text = gold.ToString() + "G";
+
+        if(MyPickLevel < 5)
+        {
+            upgradeGold.text = PickDatas[MyPickLevel].Getgold().ToString() + "G";
+        }
+        else
+        {
+            UpgradeCanvas.gameObject.SetActive(false);
+        }
     }
 
     public void UpgradePick()
     {
-        if(gold < myPick.Getgold()
+
+        if (gold < myPick.Getgold()
             || MyPickLevel > 5)
         {
             return;
         }
 
-        gold -= myPick.Getgold();
-
         MyPickLevel++;
-
-        myPick = PickDatas[MyPickLevel];
-        upgradeGold.text = myPick.Getgold().ToString();
-
+        myPick = PickDatas[MyPickLevel - 1];
         pickImg.sprite = Picks[MyPickLevel - 1];
-        Image img = null;
-        upgradeBtn.TryGetComponent<Image>(out img);
+        
 
-        if(MyPickLevel < 4)
+        if(MyPickLevel < 5)
         {
+            // Next Pick
+            Image img = null;
+            upgradeBtn.TryGetComponent<Image>(out img);
             img.sprite = Picks[MyPickLevel];
+
+            upgradeGold.text = PickDatas[MyPickLevel].Getgold().ToString() + "G";
+
         }
         else
         {
             UpgradeCanvas.SetActive(false);
         }
+
+        gold -= myPick.Getgold();
+        goldInfo.text = gold.ToString() + "G";
     }
 }
