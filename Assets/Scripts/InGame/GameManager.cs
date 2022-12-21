@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using SaveLoad;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region INFO
     [Header("Images")]
     [SerializeField] private Sprite[] Crystals = null;
     [SerializeField] private Sprite[] Picks = null;
@@ -52,7 +54,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI upgradeGold = null;
     [SerializeField] private TextMeshProUGUI timer = null;
     [SerializeField] private TextMeshProUGUI hpInfo = null;
-
+    #endregion
     public Canvas GetPauseCanvas { get { return PauseCanvas; } }
     public Canvas GetSelectStageCanvas { get { return SelectStageCanvas; } }
 
@@ -75,11 +77,38 @@ public class GameManager : MonoBehaviour
     private Image crystalImg = null;
     private int maxHP = 0;
     private int curHP = 0;
+    private int gold = 0;
     private float time = 0;
+
+    private Save save = null;
+    private Load load = null;
+    private SaveData data;
+    public Save GetSave() { return save; }
+
 
     private void Awake()
     {
         //세이브 데이터 들어갈 자리
+        save = new Save();
+        load = new Load();
+
+        SaveData? temp = load.Start();
+
+        data = (SaveData)temp;
+
+        MyLevel = data.level;
+        MyPickLevel = data.pick;
+        gold = data.gold;
+
+        if(MyLevel == 0)
+        {
+            MyLevel = 1;
+        }
+
+        if(MyPickLevel == 0)
+        {
+            MyPickLevel = 1;
+        }
 
         crystal.TryGetComponent<Image>(out crystalImg);
 
