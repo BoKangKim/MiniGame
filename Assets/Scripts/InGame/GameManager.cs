@@ -64,11 +64,13 @@ public class GameManager : MonoBehaviour
 
     public int MyLevel { get; private set; } = 0;
     public int MyPickLevel { get; private set; } = 0;
-    public CrystalScriptable myCrystal = null;
-    public PickScriptable myPick = null;
+    [HideInInspector] public CrystalScriptable myCrystal = null;
+    [HideInInspector] public PickScriptable myPick = null;
 
     private void Awake()
     {
+        //세이브 데이터 들어갈 자리
+
         for(int i = 0; i < MyLevel; i++)
         {
             Image img = null;
