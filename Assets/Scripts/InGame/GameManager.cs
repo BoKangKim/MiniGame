@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,9 +28,16 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [Header("Images")]
+    [SerializeField] private Sprite[] Cystals = null;
     [SerializeField] private Sprite[] Picks = null;
     [SerializeField] private Sprite InteractImg = null;
     [SerializeField] private Sprite NotInteractImg = null;
+
+    [Header("Sprites")]
+    [SerializeField] private SpriteRenderer crystal = null;
+
+    [Header("Button")]
+    [SerializeField] private Button[] levels = null;
 
     [Header("Canvases")]
     [SerializeField] private Canvas PauseCanvas = null;
@@ -37,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Scriptable")]
     [SerializeField] private CrystalScriptable[] CrystalDatas = null;
+    [SerializeField] private PickScriptable[] PickDatas = null;
 
     public Canvas GetPauseCanvas { get { return PauseCanvas; } }
     public Canvas GetSelectStageCanvas { get { return SelectStageCanvas; } }
@@ -53,8 +62,31 @@ public class GameManager : MonoBehaviour
     };
     #endregion
 
-    public int MyLevel { get; private set; } = 1;
-    
+    public int MyLevel { get; private set; } = 0;
+    public int MyPickLevel { get; private set; } = 0;
+    public CrystalScriptable myCrystal = null;
+    public PickScriptable myPick = null;
+
+    private void Awake()
+    {
+        for(int i = 0; i < MyLevel; i++)
+        {
+            Image img = null;
+            if (levels[i].TryGetComponent<Image>(out img) == true)
+            {
+                img.sprite = InteractImg;
+                levels[i].interactable = true;
+            }
+            else
+            {
+                Debug.LogError("Not Found Image");
+            }
+        }
+
+        myCrystal = CrystalDatas[MyLevel];
+        myPick = PickDatas[MyPickLevel];
+    }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) == true)

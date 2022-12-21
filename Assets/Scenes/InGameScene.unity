@@ -2220,6 +2220,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f94d99e074417f4186aac43c3f4f432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cystals:
+  - {fileID: 21300000, guid: 509cb3b35f001bc4a968ce8d774ed1a0, type: 3}
+  - {fileID: 21300000, guid: 9675d4635f0901647bf7230c63608399, type: 3}
+  - {fileID: 21300000, guid: 348d274d4eb056c4fa6017e66567ae24, type: 3}
+  - {fileID: 21300000, guid: f574761f04d84844bb1c64a12764b08d, type: 3}
+  - {fileID: 21300000, guid: c62587ce0e2652f4e95af56b31d2c01c, type: 3}
   Picks:
   - {fileID: 21300000, guid: 4cc374531b036824e88d71763cf31a54, type: 3}
   - {fileID: 21300000, guid: 9471ae9e4c457354cab6a783bdfb5589, type: 3}
@@ -2228,8 +2234,29 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bd90c072d8f28f04392b743f92ce0457, type: 3}
   InteractImg: {fileID: 21300000, guid: e14856af1ef6fc9449b0c62fc9e5ed9b, type: 3}
   NotInteractImg: {fileID: 21300000, guid: a73ec2992ca135e48987416ecdcdc2c3, type: 3}
+  crystal: {fileID: 0}
+  levels:
+  - {fileID: 1247778544}
+  - {fileID: 1237907604}
+  - {fileID: 2083420032}
+  - {fileID: 1217032897}
+  - {fileID: 1363319293}
   PauseCanvas: {fileID: 987733564}
   SelectStageCanvas: {fileID: 1876380635}
+  CrystalDatas:
+  - {fileID: 11400000, guid: 11e13cc934ce04b4b922e1ed1173cbc4, type: 2}
+  - {fileID: 11400000, guid: 20612deb2e2ea7b43ab43f3c3a13084f, type: 2}
+  - {fileID: 11400000, guid: 535d376b627551d4cb5b5dc63cf9e3fa, type: 2}
+  - {fileID: 11400000, guid: 592b112faa79e7c4b9772fe3136b79a9, type: 2}
+  - {fileID: 11400000, guid: 1b2ffedd74fe8f24a8195326801ba055, type: 2}
+  PickDatas:
+  - {fileID: 11400000, guid: 27715fb5fad00fa4f85881ed43326431, type: 2}
+  - {fileID: 11400000, guid: 7a71fd2a91682fb4894a61c66deee5a9, type: 2}
+  - {fileID: 11400000, guid: fa4a1476f5dbade459fb18f33a9a7e2b, type: 2}
+  - {fileID: 11400000, guid: 1f36e37c73276e444832edc54f0b7c87, type: 2}
+  - {fileID: 11400000, guid: a9ce6e8b4d85ac044a285c8c690bf48b, type: 2}
+  myCrystal: {fileID: 0}
+  myPick: {fileID: 0}
 --- !u!4 &1184134034
 Transform:
   m_ObjectHideFlags: 0
