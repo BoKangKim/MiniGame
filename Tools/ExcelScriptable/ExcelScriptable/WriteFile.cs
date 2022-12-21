@@ -13,7 +13,7 @@ namespace ExcelScriptable
         private List<string[]> splitDatas = null;
         StreamWriter[] sw = null;
 
-        public WriteFile(List<string> data,string path, string GUID)
+        public WriteFile(List<string> data,string path, string GUID,string fileName)
         {
             Console.WriteLine("Start Write Asset File..");
             
@@ -28,7 +28,7 @@ namespace ExcelScriptable
 
             for(int i = 0; i < sw.Length; i++)
             {
-                name[i] = "Crystal_" + i.ToString();
+                name[i] = fileName + "_" + i.ToString();
                 sw[i] = new StreamWriter(path + "\\" + name[i] + ".asset");
             }
 

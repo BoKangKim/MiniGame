@@ -9,6 +9,7 @@ public class ExcelToScriptable : EditorWindow
     string cvs = "";
     string folder = "";
     string __GUID = "";
+    string __name = "";
     string defaultPath = System.IO.Directory.GetCurrentDirectory() + "/Tools/CVS/";
     string __process = "D:/MiniGame/MiniGame/Tools/ExcelScriptable/ExcelScriptable/bin/Release/ExcelScriptable.exe";
 
@@ -31,6 +32,9 @@ public class ExcelToScriptable : EditorWindow
 
         GUILayout.Label("Input GUID");
         __GUID = GUILayout.TextField(__GUID, 1000);
+
+        GUILayout.Label("Input File Name");
+        __name = GUILayout.TextField(__name, 1000);
 
         if (GUILayout.Button("START CONVERT"))
         {
