@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     };
     #endregion
-
+    public int CrystalHp;
     public int MyLevel { get; private set; } = 0;
     public int MyPickLevel { get; private set; } = 0;
     [HideInInspector] public CrystalScriptable myCrystal = null;
@@ -84,9 +84,10 @@ public class GameManager : MonoBehaviour
                 Debug.LogError("Not Found Image");
             }
         }
-
         myCrystal = CrystalDatas[MyLevel];
         myPick = PickDatas[MyPickLevel];
+
+        SetCrystalHp();
     }
 
     private void Update()
@@ -106,5 +107,12 @@ public class GameManager : MonoBehaviour
                 SelectStageCanvas.gameObject.SetActive(false);
             }
         }
+        Debug.Log(CrystalHp);
+    }
+
+    void SetCrystalHp()
+    {
+        //테스트중
+        CrystalHp = CrystalDatas[0].GetHp();
     }
 }
