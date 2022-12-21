@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,6 +45,13 @@ public class GameManager : MonoBehaviour
     [Header("Scriptable")]
     [SerializeField] private CrystalScriptable[] CrystalDatas = null;
     [SerializeField] private PickScriptable[] PickDatas = null;
+
+    [Header("TEXT")]
+    [SerializeField] private TextMeshProUGUI stageInfo = null;
+    [SerializeField] private TextMeshProUGUI goldInfo = null;
+    [SerializeField] private TextMeshProUGUI upgradeGold = null;
+    [SerializeField] private TextMeshProUGUI timer = null;
+    [SerializeField] private TextMeshProUGUI hpInfo = null;
 
     public Canvas GetPauseCanvas { get { return PauseCanvas; } }
     public Canvas GetSelectStageCanvas { get { return SelectStageCanvas; } }
@@ -116,5 +124,7 @@ public class GameManager : MonoBehaviour
         myCrystal = CrystalDatas[level - 1];
         crystalImg.sprite = Crystals[level - 1];
 
+        maxHP = curHP = myCrystal.GetHP();
+        hpInfo.text = curHP.ToString() + " / " + maxHP.ToString();
     }
 }
