@@ -10,4 +10,10 @@ public class CrystalScriptable : ScriptableObject
     [SerializeField] private int stoneHP;
     [SerializeField] private int timer;
     [SerializeField] private int goldEarned;
+
+    public int GetLv() { return lv; }
+    public int GetStage() { return stage; }
+    public int GetHP() { return stoneHP; }
+    public int GetTimer() { return timer; }
+    public int GetGoldEarned() { return goldEarned; }
 }

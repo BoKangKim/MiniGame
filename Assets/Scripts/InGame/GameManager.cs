@@ -115,5 +115,6 @@ public class GameManager : MonoBehaviour
     {
         myCrystal = CrystalDatas[level - 1];
         crystalImg.sprite = Crystals[level - 1];
+
     }
 }
