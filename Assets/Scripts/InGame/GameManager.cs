@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public CrystalScriptable myCrystal = null;
     [HideInInspector] public PickScriptable myPick = null;
     private Image crystalImg = null;
+    private int maxHP = 0;
+    private int curHP = 0;
 
     private void Awake()
     {
