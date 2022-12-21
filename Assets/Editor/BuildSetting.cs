@@ -15,6 +15,7 @@ public class BuildSetting
         string[] scene = { "Assets/Scenes/HomeScene.unity",
         "Assets/Scenes/InGameScene.unity"};
         string folderName = "";
+        string folderDate = "";
 
         FileInfo buildInfo = new FileInfo(buildPath);
 
@@ -23,7 +24,15 @@ public class BuildSetting
             Directory.CreateDirectory(buildInfo.FullName);
         }
 
-        folderName = buildPath + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss") + "/";
+        folderDate = buildPath + DateTime.Now.ToString("yyyy_MM_dd") + "/";
+
+        FileInfo info = new FileInfo(folderDate);
+        if(info.Exists == false)
+        {
+            Directory.CreateDirectory(folderDate);
+        }
+
+        folderName = folderDate + DateTime.Now.ToString("HH_mm_ss") + "/";
         FileInfo folder = new FileInfo(folderName);
 
         if (folder.Exists == false)
