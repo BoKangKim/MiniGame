@@ -1565,7 +1565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &951306594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2348,6 +2348,7 @@ MonoBehaviour:
   PauseCanvas: {fileID: 987733564}
   SelectStageCanvas: {fileID: 1876380635}
   UpgradeCanvas: {fileID: 1343677681}
+  EndingCanvas: {fileID: 951306596}
   CrystalDatas:
   - {fileID: 11400000, guid: 11e13cc934ce04b4b922e1ed1173cbc4, type: 2}
   - {fileID: 11400000, guid: 20612deb2e2ea7b43ab43f3c3a13084f, type: 2}

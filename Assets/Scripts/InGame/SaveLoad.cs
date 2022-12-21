@@ -83,6 +83,8 @@ namespace SaveLoad
 
             load = JsonUtility.FromJson<SaveData>(json);
 
+
+            sr.Close();
             return load;
         }
     }

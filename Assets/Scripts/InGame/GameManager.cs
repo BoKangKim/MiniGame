@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
     private SaveData data;
     public Save GetSave() { return save; }
 
-
     private void Awake()
     {
         //세이브 데이터 들어갈 자리
@@ -130,15 +129,14 @@ public class GameManager : MonoBehaviour
 
         myPick = PickDatas[MyPickLevel - 1];
 
-        gold = 10000000;
         InitLevel(MyLevel);
     }
 
     private void Update()
     {
+
         if (time <= 0f)
         {
-            save.Start(MyLevel,gold,MyPickLevel);
             InitLevel(MyLevel);
             return;
         }
@@ -164,6 +162,7 @@ public class GameManager : MonoBehaviour
                 SelectStageCanvas.gameObject.SetActive(false);
             }
         }
+
     }
 
     public void InitLevel(int level)
@@ -182,12 +181,19 @@ public class GameManager : MonoBehaviour
 
         goldInfo.text = gold.ToString() + "G";
 
+        pickImg.sprite = Picks[MyPickLevel - 1];
         if(MyPickLevel < 5)
         {
+            Image img = null;
+            if(upgradeBtn.TryGetComponent<Image>(out img) == true)
+            {
+                img.sprite = Picks[MyPickLevel];
+            }
             upgradeGold.text = PickDatas[MyPickLevel].Getgold().ToString() + "G";
         }
         else
         {
+            upgradeBtn.gameObject.SetActive(false);  
             UpgradeCanvas.gameObject.SetActive(false);
         }
     }
@@ -200,8 +206,6 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-
-        save.Start(MyLevel, gold, MyPickLevel);
 
         MyPickLevel++;
         myPick = PickDatas[MyPickLevel - 1];
@@ -223,8 +227,12 @@ public class GameManager : MonoBehaviour
             UpgradeCanvas.SetActive(false);
         }
 
+
         gold -= myPick.Getgold();
         goldInfo.text = gold.ToString() + "G";
+
+        save.Start(MyLevel, gold, MyPickLevel);
+
     }
 
     public void ClearStage()
