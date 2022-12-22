@@ -6,6 +6,7 @@ public class HomeSceneBtnControl : MonoBehaviour
 
     public void OnClickStartBtn()
     {
+        SoundManager.Inst.PlaySFX("Button");
         SceneManager.LoadScene(1);
     }
 
@@ -14,7 +15,7 @@ public class HomeSceneBtnControl : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
-
+        SoundManager.Inst.PlaySFX("Button");
         Application.Quit();
     }
 

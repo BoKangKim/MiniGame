@@ -135,7 +135,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
         if (time <= 0f)
         {
             InitLevel(MyLevel);
@@ -249,11 +248,12 @@ public class GameManager : MonoBehaviour
         gold += myCrystal.GetGoldEarned();
         MyLevel++;
 
-        TimePause();
-        PauseCanvas.gameObject.SetActive(true); 
+        //혹시 버전 변경을 위해 할지도 몰라서
+        //TimePause();
+        //PauseCanvas.gameObject.SetActive(true); 
 
 
-        //InitLevel(MyLevel);
+        InitLevel(MyLevel);
 
         //Save
         save.Start(MyLevel, gold, MyPickLevel);
@@ -265,6 +265,7 @@ public class GameManager : MonoBehaviour
 
     public void OnClickDamage()
     {
+        SoundManager.Inst.PlaySFX("Click");
         curHP -= myPick.GettouchDamage();
         slider.value = curHP / maxHP;
         hpInfo.text = curHP.ToString() + " / " + maxHP.ToString();

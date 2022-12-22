@@ -42,6 +42,7 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        PlayBGM("Bgm");
     }
     public void PlayBGM(string p_bgmName)
     {
