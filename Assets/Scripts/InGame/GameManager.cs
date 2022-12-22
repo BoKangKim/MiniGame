@@ -1,24 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using SaveLoad;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using SaveLoad;
 
 public class GameManager : MonoBehaviour
 {
     #region SingleTon
     private static GameManager instance = null;
 
-    public static GameManager Inst 
+    public static GameManager Inst
     {
-        get 
+        get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = FindObjectOfType<GameManager>();
 
-                if(instance == null)
+                if (instance == null)
                 {
                     instance = new GameObject().AddComponent<GameManager>();
                 }
@@ -58,6 +56,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI upgradeGold = null;
     [SerializeField] private TextMeshProUGUI timer = null;
     [SerializeField] private TextMeshProUGUI hpInfo = null;
+
+    [Header("Slider")]
+    [SerializeField] private Slider slider = null;
     #endregion
     public Canvas GetPauseCanvas { get { return PauseCanvas; } }
     public Canvas GetSelectStageCanvas { get { return SelectStageCanvas; } }
@@ -79,8 +80,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public CrystalScriptable myCrystal = null;
     [HideInInspector] public PickScriptable myPick = null;
     private Image crystalImg = null;
-    private int maxHP = 0;
-    private int curHP = 0;
+    private float maxHP = 0;
+    private float curHP = 0;
     private int gold = 0;
     private float time = 0;
 
@@ -101,19 +102,19 @@ public class GameManager : MonoBehaviour
         MyPickLevel = data.pick;
         gold = data.gold;
 
-        if(MyLevel == 0)
+        if (MyLevel == 0)
         {
             MyLevel = 1;
         }
 
-        if(MyPickLevel == 0)
+        if (MyPickLevel == 0)
         {
             MyPickLevel = 1;
         }
 
         crystal.TryGetComponent<Image>(out crystalImg);
 
-        for(int i = 0; i < MyLevel; i++)
+        for (int i = 0; i < MyLevel; i++)
         {
             Image img = null;
             if (levels[i].TryGetComponent<Image>(out img) == true)
@@ -145,11 +146,11 @@ public class GameManager : MonoBehaviour
 
         timer.text = "TIMER \n" + ((int)time).ToString();
 
-        
 
-        if(Input.GetKeyDown(KeyCode.Escape) == true)
+
+        if (Input.GetKeyDown(KeyCode.Escape) == true)
         {
-            if(PauseCanvas.gameObject.activeSelf == false 
+            if (PauseCanvas.gameObject.activeSelf == false
                 && SelectStageCanvas.gameObject.activeSelf == false)
             {
                 TimePause();
@@ -176,18 +177,20 @@ public class GameManager : MonoBehaviour
         maxHP = curHP = myCrystal.GetHP();
         hpInfo.text = curHP.ToString() + " / " + maxHP.ToString();
 
-        stageInfo.text = "STAGE \n" +  myCrystal.GetStage().ToString();
+        stageInfo.text = "STAGE \n" + myCrystal.GetStage().ToString();
 
         timer.text = "TIMER \n" + myCrystal.GetTimer().ToString();
         time = myCrystal.GetTimer();
 
+        slider.value = 1;
+
         goldInfo.text = gold.ToString() + "G";
 
         pickImg.sprite = Picks[MyPickLevel - 1];
-        if(MyPickLevel < 5)
+        if (MyPickLevel < 5)
         {
             Image img = null;
-            if(upgradeBtn.TryGetComponent<Image>(out img) == true)
+            if (upgradeBtn.TryGetComponent<Image>(out img) == true)
             {
                 img.sprite = Picks[MyPickLevel];
             }
@@ -195,7 +198,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            upgradeBtn.gameObject.SetActive(false);  
+            upgradeBtn.gameObject.SetActive(false);
             UpgradeCanvas.gameObject.SetActive(false);
         }
     }
@@ -208,7 +211,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if(MyPickLevel > 5)
+        if (MyPickLevel > 5)
         {
             return;
         }
@@ -216,9 +219,9 @@ public class GameManager : MonoBehaviour
         MyPickLevel++;
         myPick = PickDatas[MyPickLevel - 1];
         pickImg.sprite = Picks[MyPickLevel - 1];
-        
 
-        if(MyPickLevel < 5)
+
+        if (MyPickLevel < 5)
         {
             // Next Pick
             Image img = null;
@@ -243,18 +246,29 @@ public class GameManager : MonoBehaviour
 
     public void ClearStage()
     {
-            gold += myCrystal.GetGoldEarned();
-            MyLevel++;
-            InitLevel(MyLevel);
+        gold += myCrystal.GetGoldEarned();
+        MyLevel++;
+
+        TimePause();
+        PauseCanvas.gameObject.SetActive(true); 
+
+
+        //InitLevel(MyLevel);
 
         //Save
-        save.Start(MyLevel,gold,MyPickLevel);
+        save.Start(MyLevel, gold, MyPickLevel);
+
+        
+
+
     }
 
     public void OnClickDamage()
     {
         curHP -= myPick.GettouchDamage();
-        if(curHP <= 0)
+        slider.value = curHP / maxHP;
+        hpInfo.text = curHP.ToString() + " / " + maxHP.ToString();
+        if (curHP <= 0)
         {
             ClearStage();
         }

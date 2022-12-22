@@ -30,7 +30,7 @@ public class InGameBtnControl : MonoBehaviour
 
     public void OnClickExitBtn()
     {
-#if UNITY_EDITOR
+#if     UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
@@ -40,5 +40,6 @@ public class InGameBtnControl : MonoBehaviour
     {
         GameManager.Inst.InitLevel(level);
         GameManager.Inst.GetSelectStageCanvas.gameObject.SetActive(false);
+        GameManager.Inst.TimePlay();
     }
 }
