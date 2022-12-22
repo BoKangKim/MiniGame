@@ -163,6 +163,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        Debug.Log(curHP);
+        Debug.Log("ÇöÀç°ñµå : " + gold);
     }
 
     public void InitLevel(int level)
@@ -241,12 +243,20 @@ public class GameManager : MonoBehaviour
 
     public void ClearStage()
     {
-        // if Clear Stage
-        gold += myCrystal.GetGoldEarned();
-        MyLevel++;
-        InitLevel(MyLevel);
+            gold += myCrystal.GetGoldEarned();
+            MyLevel++;
+            InitLevel(MyLevel);
 
         //Save
         save.Start(MyLevel,gold,MyPickLevel);
+    }
+
+    public void OnClickDamage()
+    {
+        curHP -= myPick.GettouchDamage();
+        if(curHP <= 0)
+        {
+            ClearStage();
+        }
     }
 }

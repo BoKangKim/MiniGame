@@ -7,7 +7,7 @@ public class InGameBtnControl : MonoBehaviour
 
     public void OnClickCrystalBtn()
     {
-
+        GameManager.Inst.OnClickDamage();
     }
 
     public void OnClickUpgradeBtn()
