@@ -6,8 +6,8 @@ public class HomeSceneBtnControl : MonoBehaviour
 
     public void OnClickStartBtn()
     {
-        SoundManager.Inst.PlaySFX("Button");
         SceneManager.LoadScene(1);
+        SoundManager.Inst.PlaySFX("Button");
     }
 
     public void OnClickExitBtn()
