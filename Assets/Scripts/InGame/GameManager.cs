@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
     private Load load = null;
     private SaveData data;
     public Save GetSave() { return save; }
-    [SerializeField]private Camera cam = null;
+    [SerializeField] private Camera cam = null;
 
     private void Awake()
     {
@@ -247,32 +247,38 @@ public class GameManager : MonoBehaviour
 
     public void ClearStage()
     {
+
         gold += myCrystal.GetGoldEarned();
         MyLevel++;
 
-        //혹시 버전 변경을 위해 할지도 몰라서
-        //TimePause();
-        //PauseCanvas.gameObject.SetActive(true); 
-
-
-        InitLevel(MyLevel);
-
-        //Save
-        save.Start(MyLevel, gold, MyPickLevel);
-
-        for (int i = 0; i < MyLevel; i++)
+        if (MyLevel > 5)
         {
-            Image img = null;
-            if (levels[i].TryGetComponent<Image>(out img) == true)
+            Gameover();
+        }
+        else
+        {
+            InitLevel(MyLevel);
+
+            //Save
+            save.Start(MyLevel, gold, MyPickLevel);
+
+            for (int i = 0; i < MyLevel; i++)
             {
-                img.sprite = InteractImg;
-                levels[i].interactable = true;
-            }
-            else
-            {
-                Debug.LogError("Not Found Image");
+                Image img = null;
+                if (levels[i].TryGetComponent<Image>(out img) == true)
+                {
+                    img.sprite = InteractImg;
+                    levels[i].interactable = true;
+                }
+                else
+                {
+                    Debug.LogError("Not Found Image");
+                }
             }
         }
+
+
+
 
 
     }
@@ -280,7 +286,7 @@ public class GameManager : MonoBehaviour
     public void OnClickDamage()
     {
         SoundManager.Inst.PlaySFX("Click");
-        GameObject obj = Pool.Instantiate(effect,MousePos(),Quaternion.identity);
+        GameObject obj = Pool.Instantiate(effect, MousePos(), Quaternion.identity);
         curHP -= myPick.GettouchDamage();
         slider.value = curHP / maxHP;
         hpInfo.text = curHP.ToString() + " / " + maxHP.ToString();
@@ -297,5 +303,12 @@ public class GameManager : MonoBehaviour
         pos = cam.ScreenToWorldPoint(pos);
         pos = new Vector3(pos.x, pos.y, 2f);
         return pos;
+    }
+
+    public void Gameover()
+    {
+        TimePause();
+        EndingCanvas.gameObject.SetActive(true);
+        SoundManager.Inst.PlayBGM("Ending");
     }
 }

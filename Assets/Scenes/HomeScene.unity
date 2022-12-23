@@ -160,6 +160,8 @@ MonoBehaviour:
   bgm:
   - name: Bgm
     clip: {fileID: 8300000, guid: 2ad22b8cd94643446b512e13391b7912, type: 3}
+  - name: Ending
+    clip: {fileID: 8300000, guid: 85cab38f8513cbb44bd15d0228baf85a, type: 3}
   bgmPlayer: {fileID: 1565152138}
   sfxPlayer:
   - {fileID: 1245591276}
@@ -2185,7 +2187,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
