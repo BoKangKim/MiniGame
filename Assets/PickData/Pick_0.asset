@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff3bae44848213459a08a8d350bd75c, type: 3}
   m_Name: Pick_0
   m_EditorClassIdentifier:
-  id: 0
-  stage: 1
-  stoneHP: 200
-  timer: 30
-  goldEarned: 5
+  ld: 0
+  objName: 나무 곡괭이
+  touchDamage: 1
+  gold: null

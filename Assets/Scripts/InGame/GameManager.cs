@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Slider")]
     [SerializeField] private Slider slider = null;
+
+    [Header("Effect")]
+    [SerializeField] private GameObject effect = null;
+
     #endregion
     public Canvas GetPauseCanvas { get { return PauseCanvas; } }
     public Canvas GetSelectStageCanvas { get { return SelectStageCanvas; } }
@@ -89,9 +93,11 @@ public class GameManager : MonoBehaviour
     private Load load = null;
     private SaveData data;
     public Save GetSave() { return save; }
+    private Camera cam = null;
 
     private void Awake()
     {
+        cam = Camera.main;
         //세이브 데이터 들어갈 자리
         save = new Save();
         load = new Load();
@@ -263,13 +269,21 @@ public class GameManager : MonoBehaviour
     public void OnClickDamage()
     {
         SoundManager.Inst.PlaySFX("Click");
+        Pool.Instantiate(effect,MousePos(),Quaternion.identity);
         curHP -= myPick.GettouchDamage();
-        Debug.Log(curHP);
         slider.value = curHP / maxHP;
         hpInfo.text = curHP.ToString() + " / " + maxHP.ToString();
         if (curHP <= 0)
         {
             ClearStage();
         }
+    }
+
+    private Vector3 MousePos()
+    {
+        Vector3 pos = Input.mousePosition;
+        pos = cam.ScreenToWorldPoint(pos);
+        pos = new Vector3(pos.x, pos.y, 3);
+        return pos;
     }
 }

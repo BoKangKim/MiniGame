@@ -357,8 +357,8 @@ Canvas:
   m_GameObject: {fileID: 287732735}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1593751346}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2367,6 +2367,7 @@ MonoBehaviour:
   timer: {fileID: 381077562}
   hpInfo: {fileID: 1788386265}
   slider: {fileID: 17511492}
+  effect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
   myCrystal: {fileID: 0}
   myPick: {fileID: 0}
 --- !u!4 &1184134034
@@ -3299,7 +3300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 114.96997, y: 114.63}
+  m_AnchoredPosition: {x: 114.96997, y: 114.630005}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1438393839
@@ -3408,8 +3409,8 @@ Canvas:
   m_GameObject: {fileID: 1478478156}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1593751346}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

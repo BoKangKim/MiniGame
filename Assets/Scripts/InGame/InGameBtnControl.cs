@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class InGameBtnControl : MonoBehaviour
 {
-    private void Start()
-    {
-        Debug.Log("START");
-    }
-
     public void OnClickCrystalBtn()
     {
-        Debug.Log("TEST");
         GameManager.Inst.OnClickDamage();
     }
 
