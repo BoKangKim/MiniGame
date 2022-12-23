@@ -19,7 +19,6 @@ public static class Pool
             inst = effects.Dequeue();
             inst.transform.position = pos;
             inst.transform.rotation = rot;
-            inst.transform.localScale = new Vector3(10, 10, 10);
         }
 
         return inst;

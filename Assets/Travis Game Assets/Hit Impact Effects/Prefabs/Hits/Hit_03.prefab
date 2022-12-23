@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9152828190148837667}
   - component: {fileID: 1036441836670382789}
   - component: {fileID: 905621184968373507}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4893,7 +4893,7 @@ GameObject:
   - component: {fileID: 2955623459812423940}
   - component: {fileID: 2955623459812423941}
   - component: {fileID: 2955623459812423942}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hit_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4909,7 +4909,7 @@ Transform:
   m_GameObject: {fileID: 2955623459812423943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8907369062276510965}
@@ -9786,7 +9786,7 @@ GameObject:
   - component: {fileID: 8907369062276510965}
   - component: {fileID: 8907369062276510964}
   - component: {fileID: 8907369062276510967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
