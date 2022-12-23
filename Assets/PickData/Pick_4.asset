@@ -11,8 +11,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bff3bae44848213459a08a8d350bd75c, type: 3}
   m_Name: Pick_4
-  m_EditorClassIdentifier: 
-  lv: 4
-  objName: 다이아 곡괭이
-  touchDamage: 13
-  gold: 900
+  m_EditorClassIdentifier:
+  id: 4
+  stage: 5
+  stoneHP: 4250
+  timer: 30
+  goldEarned: null

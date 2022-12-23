@@ -162,9 +162,6 @@ public class GameManager : MonoBehaviour
                 SelectStageCanvas.gameObject.SetActive(false);
             }
         }
-
-        Debug.Log(curHP);
-        Debug.Log("ÇöÀç°ñµå : " + gold);
     }
 
     public void InitLevel(int level)
@@ -267,6 +264,7 @@ public class GameManager : MonoBehaviour
     {
         SoundManager.Inst.PlaySFX("Click");
         curHP -= myPick.GettouchDamage();
+        Debug.Log(curHP);
         slider.value = curHP / maxHP;
         hpInfo.text = curHP.ToString() + " / " + maxHP.ToString();
         if (curHP <= 0)

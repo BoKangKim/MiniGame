@@ -38,7 +38,7 @@ public class ExcelToScriptable : EditorWindow
 
         if (GUILayout.Button("START CONVERT"))
         {
-            Process.Start(__process,defaultPath + cvs + " " + folder + " " + __GUID);
+            Process.Start(__process,defaultPath + cvs + " " + folder + " " + __GUID + " " + __name);
         }
 
         GUILayout.EndVertical();
