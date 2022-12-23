@@ -14667,6 +14667,7 @@ GameObject:
   - component: {fileID: 5024009746357069193}
   - component: {fileID: 5024009746357069192}
   - component: {fileID: 5024009746357069195}
+  - component: {fileID: -6919874453882485022}
   m_Layer: 6
   m_Name: Hit_02
   m_TagString: Untagged
@@ -14702,7 +14703,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.75
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -14882,7 +14883,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.4117647}
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.98039216, g: 0.639843, b: 0, a: 1}
@@ -19550,3 +19551,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-6919874453882485022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024009746357069194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7ce4702018c174e827a14137aceb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
