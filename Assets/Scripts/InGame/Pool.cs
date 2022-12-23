@@ -17,6 +17,7 @@ public static class Pool
         else
         {
             inst = effects.Dequeue();
+            inst.gameObject.SetActive(true);
             inst.transform.position = pos;
             inst.transform.rotation = rot;
         }
@@ -32,8 +33,9 @@ public static class Pool
             return;
         }
 
+        effects.Enqueue(effect);
+
         effect.gameObject.SetActive(false);
 
-        effects.Enqueue(effect);
     }
 }

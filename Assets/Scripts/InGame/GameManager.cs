@@ -2,6 +2,8 @@ using SaveLoad;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -88,16 +90,18 @@ public class GameManager : MonoBehaviour
     private float curHP = 0;
     private int gold = 0;
     private float time = 0;
+    private RectTransform crystalTrans = null;
 
     private Save save = null;
     private Load load = null;
     private SaveData data;
     public Save GetSave() { return save; }
     [SerializeField] private Camera cam = null;
+    private Vector3 startPos;
 
     private void Awake()
     {
-        //¼¼ÀÌºê µ¥ÀÌÅÍ µé¾î°¥ ÀÚ¸®
+        //ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¥ ï¿½Ú¸ï¿½
         save = new Save();
         load = new Load();
 
@@ -106,6 +110,9 @@ public class GameManager : MonoBehaviour
         MyLevel = data.level;
         MyPickLevel = data.pick;
         gold = data.gold;
+
+        crystalTrans = crystal.GetComponent<RectTransform>();
+        startPos = crystalTrans.position;
 
         if (MyLevel == 0)
         {
@@ -285,6 +292,7 @@ public class GameManager : MonoBehaviour
 
     public void OnClickDamage()
     {
+        StartCoroutine(Shake());
         SoundManager.Inst.PlaySFX("Click");
         GameObject obj = Pool.Instantiate(effect, MousePos(), Quaternion.identity);
         curHP -= myPick.GettouchDamage();
@@ -296,6 +304,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator Shake()
+    {
+        float time = 0f;
+        
+        while(time < 0.2f)
+        {
+            time += Time.deltaTime;
+            float rnd = Random.Range(-4.0f, 4.0f);
+            Debug.Log(rnd);
+            crystalTrans.position = new Vector3(rnd,startPos.y,startPos.z);
+
+            yield return null;
+        }
+
+        crystalTrans.position = startPos;
+    }
     private Vector3 MousePos()
     {
         Vector3 pos = Input.mousePosition;
