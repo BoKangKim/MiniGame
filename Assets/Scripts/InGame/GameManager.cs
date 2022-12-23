@@ -261,8 +261,20 @@ public class GameManager : MonoBehaviour
         //Save
         save.Start(MyLevel, gold, MyPickLevel);
 
-        
-        
+        for (int i = 0; i < MyLevel; i++)
+        {
+            Image img = null;
+            if (levels[i].TryGetComponent<Image>(out img) == true)
+            {
+                img.sprite = InteractImg;
+                levels[i].interactable = true;
+            }
+            else
+            {
+                Debug.LogError("Not Found Image");
+            }
+        }
+
 
     }
 
